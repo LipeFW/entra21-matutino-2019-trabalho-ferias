@@ -12,7 +12,7 @@ namespace Model
         public int Id;
         public int Id_Estado;
         public string Nome;
-        public int Numero_Habitates;
+        public int Numero_Habitantes;
 
         public Cidade cidade;
 
