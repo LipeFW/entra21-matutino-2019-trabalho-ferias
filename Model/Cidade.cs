@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Usuario
+
+    public class Cidade
     {
         public int Id;
+        public int Id_Estado;
         public string Nome;
-        public string Login;
-        public string Senha;
+        public int Numero_Habitates;
 
-        public Usuario usuario;
+        public Cidade cidade;
 
     }
-
-
-
 }

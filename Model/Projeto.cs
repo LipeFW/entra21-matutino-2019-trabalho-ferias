@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Usuario
+    public class Projeto
     {
         public int Id;
+        public int Id_Cliente;
         public string Nome;
-        public string Login;
-        public string Senha;
+        public decimal Data_Criacao;
+        public decimal Data_Finalizacao;
 
-        public Usuario usuario;
+
+        public Projeto projeto;
 
     }
-
-
-
 }
