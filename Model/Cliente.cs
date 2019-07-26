@@ -11,12 +11,12 @@ namespace Model
         public int Id;
         public int Id_Cidade;
         public string Nome;
-        public decimal CPF;
-        public decimal Data_Nascimento;
-        public decimal Numero;
+        public string CPF;
+        public DateTime Data_Nascimento;
+        public int Numero;
         public string Complemento;
         public string Logradouro;
-        public decimal CEP;
+        public string CEP;
 
         public Cliente cliente;
 

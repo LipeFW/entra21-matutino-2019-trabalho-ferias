@@ -55,8 +55,8 @@ INNER JOIN categorias ON
                 projeto.Data_Criacao = Convert.ToInt32(linha["ProjetoData_Criacao"]);
                 projeto.Data_Finalizacao = Convert.ToInt32(linha["ProjetoData_Finalizacao"]);
                
-                projeto.Categoria = new Categoria();
-                projeto.Categoria.Nome = linha["CategoriaNome"].ToString();
+                //projeto.Categoria = new Categoria();
+                //projeto.Categoria.Nome = linha["CategoriaNome"].ToString();
                 projetos.Add(projeto);
             }
             return projetos;

@@ -1,15 +1,15 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace Repository
 {
-    class ClienteRepositorio
+    public class ClienteRepositorio
     {
         public int Inserir(Cliente cliente)
         {
@@ -34,7 +34,7 @@ OUTPUT INSERTED.ID VALUES
         }
 
 
-        public List<Usuario> ObterTodos()
+        public List<Cliente> ObterTodos()
         {
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = @"SELECT 
@@ -53,8 +53,8 @@ INNER JOIN categorias ON
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
-
             List<Cliente> clientes = new List<Cliente>();
+
             foreach (DataRow linha in tabela.Rows)
             {
                 Cliente cliente = new Cliente();
@@ -62,7 +62,7 @@ INNER JOIN categorias ON
                 cliente.Id_Cidade = Convert.ToInt32(linha["ClienteId_Cidade"]);
                 cliente.Nome = linha["ClienteNome"].ToString();
                 cliente.CPF = linha["ClienteCPF"].ToString();
-                cliente.Data_Nascimento = Convert.ToInt32(linha["ClienteData_Nascimento"]);
+                cliente.Data_Nascimento = Convert.ToDateTime(linha["ClienteData_Nascimento"]);
                 cliente.Numero = Convert.ToInt32(linha["ClienteNumero"]);
                 cliente.Complemento = linha["ClienteComplemento"].ToString();
                 cliente.Logradouro = linha["ClienteLogradouro"].ToString();
@@ -71,6 +71,7 @@ INNER JOIN categorias ON
 
                 clientes.Add(cliente);
             }
+
             return clientes;
 
         }

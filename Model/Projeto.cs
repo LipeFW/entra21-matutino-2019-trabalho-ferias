@@ -11,8 +11,8 @@ namespace Model
         public int Id;
         public int Id_Cliente;
         public string Nome;
-        public decimal Data_Criacao;
-        public decimal Data_Finalizacao;
+        public DateTime Data_Criacao;
+        public DateTime Data_Finalizacao;
 
 
         public Projeto projeto;

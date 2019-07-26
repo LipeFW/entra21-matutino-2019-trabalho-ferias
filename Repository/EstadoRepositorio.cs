@@ -12,7 +12,7 @@ namespace Repository
    public class EstadoRepositorio
     {
         
-            public int inserir(Estado estado)
+            public int Inserir(Estado estado)
             {
                 SqlCommand comando = Conexao.Conectar();
                 comando.CommandText = @"INSERT INTO estados(id,nome,sigla)
@@ -49,8 +49,8 @@ INNER JOIN categoria ON
                     estado.Nome = linha["EstadoNome"].ToString();
                     estado.Sigla = linha["EstadoSigla"].ToString();
 
-                    estado.Categoria = new Categoria();
-                    estado.Categoria.Nome = linha["CategoriaNome"].ToString();
+                    //estado.Categoria = new Categoria();
+                    //estado.Categoria.Nome = linha["CategoriaNome"].ToString();
                     estados.Add(estado);
                 }
                 return estados;

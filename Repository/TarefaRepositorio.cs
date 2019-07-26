@@ -60,7 +60,7 @@ INNER JOIN categorias ON
                 tarefa.Id_Categoria = Convert.ToInt32(linha["TarefaId_Categoria"]);
                 tarefa.Titulo= linha["TarefaTitulo"].ToString();
                 tarefa.Descricao= linha["TarefaDescricao"].ToString();
-                tarefa.Duracao= Convert.ToInt32(linha["TarefaDuracao"]);
+                tarefa.Duracao= Convert.ToDateTime(linha["TarefaDuracao"]);
                
                
                 tarefas.Add(tarefa);

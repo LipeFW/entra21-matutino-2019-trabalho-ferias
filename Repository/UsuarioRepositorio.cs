@@ -37,9 +37,7 @@ usuarios.id AS 'UsuarioId',
 usuarios.nome AS 'UsuarioNome',
 usuarios.login AS 'UsuarioLogin',
 usuarios.senha AS 'UsuarioSenha'
-FROM usuarios
-INNER JOIN categorias ON
-    (Usuario .id_Categoria= categoria.Id)";
+FROM usuarios";
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
