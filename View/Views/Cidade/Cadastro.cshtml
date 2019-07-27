@@ -3,5 +3,52 @@
     ViewBag.Title = "Cadastro Cidade";
 }
 
-<h2>Cadastro Cidade</h2>
+<h3>Cadastro Cidade</h3>
+
+<form action="/cidade/store" method="post">
+    <div class="row">
+        <div class="form-group">
+            <label for="campo-nome">Nome</label>
+            <input type="text" name="nome"
+                   class="form-control"
+                   id="campo-nome" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label for="campo-habitantes">Número de Habitantes</label>
+            <input type="text" name="habitantes"
+                   class="form-control"
+                   id="campo-habitantes" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-estado">Estado</label>
+                <select class="form-control"
+                        name="estado">
+                    <option disabled="disabled"
+                            selected="selected">
+                        Selecione um estado
+                    </option>
+                    @foreach (Model.Estado estado in ViewBag.Estados)
+                    {
+                        <option value="@estado.Id">@estado.Nome</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit"
+                    class="btn btn-success">
+                Salvar
+            </button>
+        </div>
+    </div>
+</form>
 

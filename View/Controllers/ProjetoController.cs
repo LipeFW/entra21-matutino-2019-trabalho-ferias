@@ -38,9 +38,9 @@ namespace View.Controllers
         {
             Projeto projeto = new Projeto();
             projeto.Nome = nome;
-            projeto.Data_Criacao = criacao;
-            projeto.Data_Finalizacao = finalizacao;  
-            projeto.Id_Cliente = cliente;
+            projeto.DataCriacao = criacao;
+            projeto.DataFinalizacao = finalizacao;  
+            projeto.IdCliente = cliente;
             repository.Inserir(projeto);
 
             return RedirectToAction("Index");

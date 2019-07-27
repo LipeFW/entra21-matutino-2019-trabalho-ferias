@@ -9,10 +9,10 @@ namespace Model
     public class Projeto
     {
         public int Id;
-        public int Id_Cliente;
+        public int IdCliente;
         public string Nome;
-        public DateTime Data_Criacao;
-        public DateTime Data_Finalizacao;
+        public DateTime DataCriacao;
+        public DateTime DataFinalizacao;
 
 
         public Projeto projeto;

@@ -9,10 +9,10 @@ namespace Model
     public class Cliente
     {
         public int Id;
-        public int Id_Cidade;
+        public int IdCidade;
         public string Nome;
         public string CPF;
-        public DateTime Data_Nascimento;
+        public DateTime DataNascimento;
         public int Numero;
         public string Complemento;
         public string Logradouro;

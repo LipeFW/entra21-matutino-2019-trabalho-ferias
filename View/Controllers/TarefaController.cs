@@ -38,9 +38,9 @@ namespace View.Controllers
         {
             Tarefa tarefa = new Tarefa();
             tarefa.Titulo = titulo;
-            tarefa.Id_Usuario_Responsavel = responsavel;
-            tarefa.Id_Categoria = categoria;
-            tarefa.Id_Projeto = projeto;
+            tarefa.IdUsuarioResponsavel = responsavel;
+            tarefa.IdCategoria = categoria;
+            tarefa.IdProjeto = projeto;
             repository.Inserir(tarefa);
 
             return RedirectToAction("Index");

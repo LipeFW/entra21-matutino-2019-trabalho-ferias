@@ -27,10 +27,10 @@ namespace View.Controllers
 
         public ActionResult Cadastro()
         {
-            EstadoRepositorio estadoRepositorio = new EstadoRepositorio();
-            List<Estado> estados = estadoRepositorio.ObterTodos();
+            //EstadoRepositorio estadoRepositorio = new EstadoRepositorio();
+            //List<Estado> estados = estadoRepositorio.ObterTodos();
 
-            ViewBag.Estados = estados;
+            //ViewBag.Estados = estados;
             return View();
         }
 

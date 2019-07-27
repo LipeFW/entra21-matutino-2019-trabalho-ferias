@@ -27,10 +27,10 @@ namespace View.Controllers
 
         public ActionResult Cadastro()
         {
-            CidadeRepositorio cidadeRepositorio = new CidadeRepositorio();
-            List<Cidade> cidades = cidadeRepositorio.ObterTodos();
+            EstadoRepositorio estadoRepositorio = new EstadoRepositorio();
+            List<Estado> estados = estadoRepositorio.ObterTodos();
 
-            ViewBag.Cidades = cidades;
+            ViewBag.Estados = estados;
             return View();
         }
 
@@ -38,8 +38,8 @@ namespace View.Controllers
         {
             Cidade cidade = new Cidade();
             cidade.Nome = nome;
-            cidade.Numero_Habitantes = habitantes;
-            cidade.Id_Estado = estado;
+            cidade.NumeroHabitantes = habitantes;
+            cidade.IdEstado = estado;
             repository.Inserir(cidade);
 
             return RedirectToAction("Index");

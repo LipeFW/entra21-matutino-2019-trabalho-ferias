@@ -3,5 +3,36 @@
     ViewBag.Title = "Cadastro Estado";
 }
 
-<h2>Cadastro Estado</h2>
+<h3>Cadastro Estado</h3>
 
+<form method="post" action="/estado/store">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-nome">Nome</label>
+                <input type="text" name="nome" id="campo-nome" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-sigla">Sigla</label>
+                <input type="text" name="sigla" id="campo-sigla" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit"
+                    class="btn btn-success">
+                Salvar
+            </button>
+        </div>
+    </div>
+
+
+</form>

@@ -27,10 +27,10 @@ namespace View.Controllers
 
         public ActionResult Cadastro()
         {
-            ClienteRepositorio clienteRepositorio = new ClienteRepositorio();
-            List<Cliente> clientes = clienteRepositorio.ObterTodos();
+            CidadeRepositorio cidadeRepositorio = new CidadeRepositorio();
+            List<Cidade> cidades = cidadeRepositorio.ObterTodos();
 
-            ViewBag.Clientes = clientes;
+            ViewBag.Cidades = cidades;
             return View();
         }
 
@@ -41,8 +41,8 @@ namespace View.Controllers
             cliente.CPF = cpf;
             cliente.CEP = cep;
             cliente.Complemento = complemento;
-            cliente.Data_Nascimento = nascimento;
-            cliente.Id_Cidade = cidade;
+            cliente.DataNascimento = nascimento;
+            cliente.IdCidade = cidade;
             cliente.Logradouro = logradouro;
             cliente.Numero = numero;
             repository.Inserir(cliente);

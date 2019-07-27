@@ -20,9 +20,9 @@ namespace Repository
 OUTPUT INSERTED.ID VALUES
 (@ID,@ID_USUARIO_RESPONSAVEL,@ID_PROJETO,@ID_CATEGORIA,@TITULO,@DESCRICAO,@DURACAO)";
                 comando.Parameters.AddWithValue("@ID", tarefa.Id);
-                comando.Parameters.AddWithValue("@ID_USUARIO_RESPONSAVEL", tarefa.Id_Usuario_Responsavel);
-                comando.Parameters.AddWithValue("@ID_PROJETO", tarefa.Id_Projeto);
-                comando.Parameters.AddWithValue("@ID_CATEGORIA", tarefa.Id_Categoria);
+                comando.Parameters.AddWithValue("@ID_USUARIO_RESPONSAVEL", tarefa.IdUsuarioResponsavel);
+                comando.Parameters.AddWithValue("@ID_PROJETO", tarefa.IdProjeto);
+                comando.Parameters.AddWithValue("@ID_CATEGORIA", tarefa.IdCategoria);
                 comando.Parameters.AddWithValue("@TITULO", tarefa.Titulo);
                 comando.Parameters.AddWithValue("@DESCRICAO", tarefa.Descricao);
                 comando.Parameters.AddWithValue("@DURACAO", tarefa.Duracao);
@@ -55,9 +55,9 @@ INNER JOIN categorias ON
             {
                Tarefa tarefa = new Tarefa();
                 tarefa.Id = Convert.ToInt32(linha["TarefaId"]);
-                tarefa.Id_Usuario_Responsavel = Convert.ToInt32(linha["TarefaId_Usuario_Responsavel"]);
-                tarefa.Id_Projeto = Convert.ToInt32(linha["TarefaId_Projeto"]);
-                tarefa.Id_Categoria = Convert.ToInt32(linha["TarefaId_Categoria"]);
+                tarefa.IdUsuarioResponsavel = Convert.ToInt32(linha["TarefaId_Usuario_Responsavel"]);
+                tarefa.IdProjeto = Convert.ToInt32(linha["TarefaId_Projeto"]);
+                tarefa.IdCategoria = Convert.ToInt32(linha["TarefaId_Categoria"]);
                 tarefa.Titulo= linha["TarefaTitulo"].ToString();
                 tarefa.Descricao= linha["TarefaDescricao"].ToString();
                 tarefa.Duracao= Convert.ToDateTime(linha["TarefaDuracao"]);

@@ -15,10 +15,9 @@ namespace Repository
             public int Inserir(Estado estado)
             {
                 SqlCommand comando = Conexao.Conectar();
-                comando.CommandText = @"INSERT INTO estados(id,nome,sigla)
-OUTPUT INSERTED.ID VALUES
-(@ID,@NOME,@SIGLA)";
-                comando.Parameters.AddWithValue("@ID", estado.Id);
+                comando.CommandText = @"INSERT INTO estados(nome,sigla)
+OUTPUT INSERTED.ID
+VALUES (@NOME,@SIGLA)";
                 comando.Parameters.AddWithValue("@NOME", estado.Nome);
                 comando.Parameters.AddWithValue("@SIGLA", estado.Sigla);
                
@@ -34,10 +33,8 @@ OUTPUT INSERTED.ID VALUES
                 comando.CommandText = @"SELECT 
 estados.id AS 'EstadoId',
 estados.nome AS 'EstadoNome',
-estados.sigla AS 'EstadoSigla',
-FROM estados
-INNER JOIN categoria ON
-    (estado.Categoria=Categoria.Id)";
+estados.sigla AS 'EstadoSigla'
+FROM estados";
 
                 DataTable tabela = new DataTable();
                 tabela.Load(comando.ExecuteReader());

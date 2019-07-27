@@ -19,10 +19,10 @@ namespace Repository
 OUTPUT INSERTED.ID VALUES
 (@ID,@ID_CLIENTE,@NOME,@DATA_CRIACAO,@DATA_FINALIZACAO)";
                 comando.Parameters.AddWithValue("@ID", projeto.Id);
-                comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.Id_Cliente);
+                comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.IdCliente);
                 comando.Parameters.AddWithValue("@NOME", projeto.Nome);
-                comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.Data_Criacao);
-                comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.Data_Finalizacao);
+                comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
+                comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
                
                 int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
@@ -50,10 +50,10 @@ INNER JOIN categorias ON
             {
                 Projeto projeto = new Projeto();
                 projeto.Id = Convert.ToInt32(linha["ProjetoId"]);
-                projeto.Id_Cliente = Convert.ToInt32(linha["ProjetoId_Cliente"]);
+                projeto.IdCliente = Convert.ToInt32(linha["ProjetoId_Cliente"]);
                 projeto.Nome = linha["ProjetoNome"].ToString();
-                projeto.Data_Criacao = Convert.ToInt32(linha["ProjetoData_Criacao"]);
-                projeto.Data_Finalizacao = Convert.ToInt32(linha["ProjetoData_Finalizacao"]);
+                projeto.DataCriacao = Convert.ToDateTime(linha["ProjetoData_Criacao"]);
+                projeto.DataFinalizacao = Convert.ToDateTime(linha["ProjetoData_Finalizacao"]);
                
                 //projeto.Categoria = new Categoria();
                 //projeto.Categoria.Nome = linha["CategoriaNome"].ToString();

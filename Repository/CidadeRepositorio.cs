@@ -14,13 +14,13 @@ namespace Repository
         public int Inserir(Cidade cidade)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"INSERT INTO cidades (id,id_Estado,nome,numero_Habitantes)
-OUTPUT INSERTED.ID VALUES
-(@ID,@ID_ESTADO,@NOME,NUMERO_HABITANTES)";
-            comando.Parameters.AddWithValue("@ID", cidade.Id);
-            comando.Parameters.AddWithValue("@ID_ESTADO", cidade.Id_Estado);
+            comando.CommandText = @"INSERT INTO cidades
+(id_Estado,nome,numero_habitantes)
+OUTPUT INSERTED.ID
+VALUES (@ID_ESTADO,@NOME,@NUMERO_HABITANTES)";
+            comando.Parameters.AddWithValue("@ID_ESTADO", cidade.IdEstado);
             comando.Parameters.AddWithValue("@NOME", cidade.Nome);
-            comando.Parameters.AddWithValue("@NUMERO_HABITANTES", cidade.Numero_Habitantes);
+            comando.Parameters.AddWithValue("@NUMERO_HABITANTES", cidade.NumeroHabitantes);
 
 
             int id = Convert.ToInt32(comando.ExecuteScalar());
@@ -36,10 +36,8 @@ OUTPUT INSERTED.ID VALUES
 cidades.id AS 'CidadeId',
 cidades.id_Estado AS 'CidadeId_Estado',
 cidades.Numero_Habitantes AS 'CidadeNumero_Habitantes',
-cidades.Nome AS 'CidadeNome',
-FROM cidades
-INNER JOIN categorias ON
-    (Cidades.id_Categoria= categoria.Id)";
+cidades.Nome AS 'CidadeNome'
+FROM cidades";
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
@@ -49,8 +47,8 @@ INNER JOIN categorias ON
             {
                 Cidade cidade = new Cidade();
                 cidade.Id = Convert.ToInt32(linha["CidadeId"]);
-                cidade.Id_Estado = Convert.ToInt32(linha["CidadeId_Estado"]);
-                cidade.Numero_Habitantes = Convert.ToInt32(linha["CidadeNumero_Habitantes"]);
+                cidade.IdEstado = Convert.ToInt32(linha["CidadeId_Estado"]);
+                cidade.NumeroHabitantes = Convert.ToInt32(linha["CidadeNumero_Habitantes"]);
                 cidade.Nome = linha["CidadeNome"].ToString();
 
 

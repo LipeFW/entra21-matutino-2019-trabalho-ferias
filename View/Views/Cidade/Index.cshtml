@@ -3,5 +3,39 @@
     ViewBag.Title = "Cidades";
 }
 
-<h2>Cidades</h2>
+<h3>Cidades</h3>
 
+<div class="row mb-3">
+    <div class="col-12">
+        <a href="/cidade/cadastro" class="btn btn-primary float-right">
+            <i class="fas fa-plus"></i> Nova Cidade
+        </a>
+    </div>
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="bg-primary">
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Habitantes</th>
+        </tr>
+    </thead>
+    <tfoot class="bg-primary">
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Habitantes</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (Model.Cidade cidade in ViewBag.Cidades)
+        {
+        <tr>
+            <td>@cidade.Id</td>
+            <td>@cidade.Nome</td>
+            <td>@cidade.NumeroHabitantes</td>
+        </tr>
+        }
+    </tbody>
+</table>

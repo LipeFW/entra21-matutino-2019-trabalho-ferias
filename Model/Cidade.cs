@@ -10,9 +10,9 @@ namespace Model
     public class Cidade
     {
         public int Id;
-        public int Id_Estado;
+        public int IdEstado;
         public string Nome;
-        public int Numero_Habitantes;
+        public int NumeroHabitantes;
 
         public Cidade cidade;
 

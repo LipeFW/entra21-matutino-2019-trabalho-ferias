@@ -5,3 +5,55 @@
 
 <h2>Clientes</h2>
 
+<div class="row mb-3">
+    <div class="col-12">
+        <a href="/cliente/cadastro" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Novo Cliente</a>
+    </div>
+</div>
+
+
+<table class="table table-striped table-hover table-bordered">
+
+    <thead class="bg-primary">
+        <tr>
+            <th>Código</th>
+            <th>Cidade</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Nascimento</th>
+            <th>Complemento</th>
+            <th>Loradouro</th>
+            <th>CEP</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tfoot class="bg-primary">
+        <tr>
+            <th>Código</th>
+            <th>Cidade</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Nascimento</th>
+            <th>Complemento</th>
+            <th>Loradouro</th>
+            <th>CEP</th>
+            <th>Ação</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (Model.Cliente cliente in ViewBag.Clientes)
+        {
+            <tr>
+                <td>@cliente.Id</td>
+                <td>@cliente.IdCidade</td>
+                <td>@cliente.Nome</td>
+                <td>@cliente.CPF</td>
+                <td>@cliente.DataNascimento</td>
+                <td>@cliente.Complemento</td>
+                <td>@cliente.Logradouro</td>
+                <td>@cliente.CEP</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>

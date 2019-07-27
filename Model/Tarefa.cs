@@ -9,9 +9,9 @@ namespace Model
     public class Tarefa
     {
         public int Id;
-        public int Id_Usuario_Responsavel;
-        public int Id_Projeto;
-        public int Id_Categoria;
+        public int IdUsuarioResponsavel;
+        public int IdProjeto;
+        public int IdCategoria;
         public string Titulo;
         public string Descricao;
         public DateTime Duracao;
