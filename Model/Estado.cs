@@ -12,7 +12,5 @@ namespace Model
         public string Nome;
         public string Sigla;
 
-        public Estado estado;
-
     }
 }

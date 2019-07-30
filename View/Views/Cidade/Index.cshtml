@@ -3,35 +3,32 @@
     ViewBag.Title = "Cidades";
 }
 
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Cidades</title>
-    <link href="https://fonts.googleapis.com/css?family=Signika+Negative&display=swap" rel="stylesheet">
-</head>
-<h3>Cidades</h3>
+<h3 class="text-center mb-3 mt-3 text-dark">Cidades</h3>
 
-<div class="row mb-3">
+<div class="row">
     <div class="col-12">
-        <a href="/cidade/cadastro" class="btn btn-primary float-right">
-            <i class="fas fa-plus"> </i> Nova Cidade
+        <a href="/categoria/cadastro" class="btn btn-dark float-right mb-3">
+            <i class="fas fa-plus"></i> Nova Cidade
         </a>
     </div>
 </div>
 
-<table class="table table-striped table-hover table-bordered">
-    <thead class="bg-primary">
+<table class="table table-striped table-hover table-bordered ">
+    <thead>
         <tr>
             <th>Código</th>
             <th>Nome</th>
             <th>Habitantes</th>
+            <th>Estado</th>
             <th>Ação</th>
         </tr>
     </thead>
-    <tfoot class="bg-primary">
+    <tfoot>
         <tr>
             <th>Código</th>
             <th>Nome</th>
             <th>Habitantes</th>
+            <th>Estado</th>
             <th>Ação</th>
         </tr>
     </tfoot>
@@ -42,9 +39,14 @@
                 <td>@cidade.Id</td>
                 <td>@cidade.Nome</td>
                 <td>@cidade.NumeroHabitantes</td>
+                <td>@cidade.Estado.Nome</td>
                 <td>
-                    <a href="/cidade/editar?id=@ViewBag.Cidades">Editar</a>
-                    <a href="/cidade/apagar?id=@ViewBag.Cidades">Apagar</a>
+                    <a href="/cidade/editar?id=@cidade.Id" class="btn btn-primary">
+                        <i class="fas fa-pen"></i> Editar
+                    </a>
+                    <a href="/cidade/apagar?id=@cidade.Id" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Apagar
+                    </a>
                 </td>
             </tr>
         }

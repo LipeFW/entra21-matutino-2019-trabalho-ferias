@@ -14,7 +14,7 @@ namespace Model
         public string Nome;
         public int NumeroHabitantes;
 
-        public Cidade cidade;
+        public Estado Estado;
 
     }
 }

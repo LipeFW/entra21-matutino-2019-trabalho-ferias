@@ -5,7 +5,7 @@
 
 <h3>Cadastro Projeto</h3>
 
-<form method="post" action="/estado/store">
+<form method="post" action="/projeto/store">
     <div class="row">
         <div class="col-12">
             <div class="form-group">
@@ -28,7 +28,7 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="campo-datacrianca">Data de Criação</label>
-                <input type="text" name="datacriacao" id="campo-datacriacao" class="form-control" />
+                <input type="datetime-local" name="criacao" id="campo-datacriacao" class="form-control" />
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="campo-datafinalizacao">Data de Finalização</label>
-                <input type="text" name="datafinalizacao" id="campo-datafinalizacao" class="form-control" />
+                <input type="datetime-local" name="finalizacao" id="campo-datafinalizacao" class="form-control" />
             </div>
         </div>
     </div>

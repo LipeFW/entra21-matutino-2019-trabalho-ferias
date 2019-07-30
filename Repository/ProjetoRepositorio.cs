@@ -15,7 +15,7 @@ namespace Repository
         public int Inserir(Projeto projeto)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"INSERT INTO projetos(id,id_Cliente,nome,data_Criacao,data_finalizacao)
+            comando.CommandText = @"INSERT INTO projetos(id,id_cliente,nome,data_criacao,data_finalizacao)
             OUTPUT INSERTED.ID VALUES
             (@ID,@ID_CLIENTE,@NOME,@DATA_CRIACAO,@DATA_FINALIZACAO)";
             comando.Parameters.AddWithValue("@ID", projeto.Id);

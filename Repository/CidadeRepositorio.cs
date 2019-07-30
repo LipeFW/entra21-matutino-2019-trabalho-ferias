@@ -36,8 +36,10 @@ namespace Repository
             cidades.id AS 'CidadeId',
             cidades.id_estado AS 'CidadeId_Estado',
             cidades.numero_habitantes AS 'CidadeNumero_Habitantes',
-            cidades.nome AS 'CidadeNome'
-            FROM cidades";
+            cidades.nome AS 'CidadeNome',
+            estados.nome AS 'EstadoNome'
+            FROM cidades
+            INNER JOIN estados ON (cidades.id_estado = estados.id)";
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
@@ -50,6 +52,8 @@ namespace Repository
                 cidade.IdEstado = Convert.ToInt32(linha["CidadeId_Estado"]);
                 cidade.NumeroHabitantes = Convert.ToInt32(linha["CidadeNumero_Habitantes"]);
                 cidade.Nome = linha["CidadeNome"].ToString();
+                cidade.Estado = new Estado();
+                cidade.Estado.Nome = linha["EstadoNome"].ToString();
                 cidades.Add(cidade);
             }
             return cidades;

@@ -34,7 +34,7 @@ namespace View.Controllers
             return View();
         }
 
-        public ActionResult Store(string nome, DateTime criacao, DateTime finalizacao, int cliente)
+        public ActionResult Store(int cliente, string nome, DateTime criacao, DateTime finalizacao)
         {
             Projeto projeto = new Projeto();
             projeto.Nome = nome;

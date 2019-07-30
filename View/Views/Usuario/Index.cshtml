@@ -3,16 +3,18 @@
     ViewBag.Title = "Usuários";
 }
 
-<h3>Usuários</h3>
+<h3 class="text-center mb-3 mt-3 text-dark">Usuários</h3>
 
-<div class="row mb-3">
+<div class="row">
     <div class="col-12">
-        <a href="/usuario/cadastro" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Novo Usuário</a>
+        <a href="/usuario/cadastro" class="btn btn-dark float-right mb-3">
+            <i class="fas fa-plus"></i> Novo Usuário
+        </a>
     </div>
 </div>
 
 <table class="table table-striped table-hover table-bordered">
-    <thead class="bg-primary">
+    <thead>
         <tr>
             <th>Código</th>
             <th>Nome</th>
@@ -21,7 +23,7 @@
             <th>Ação</th>
         </tr>
     </thead>
-    <tfoot class="bg-primary">
+    <tfoot>
         <tr>
             <th>Código</th>
             <th>Nome</th>
