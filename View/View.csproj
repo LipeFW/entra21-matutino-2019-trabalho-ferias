@@ -153,6 +153,7 @@
     <Compile Include="Controllers\CidadeController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EstadoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\TarefaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -188,6 +189,7 @@
     <Content Include="Views\Projeto\Editar.cshtml" />
     <Content Include="Views\Tarefa\Editar.cshtml" />
     <Content Include="Views\Usuario\Editar.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
