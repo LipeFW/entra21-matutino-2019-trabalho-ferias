@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    <form action="/cliente/editar/" method="post">
+        <div>
+            <label for="campo-nome">Nome</label>
+            <input type="text" name="nome" id="campo-nome" value="@ViewBag.Cliente.Nome" />
+        </div>
+        <div>
+            <select name="cidade">
+                <option disabled="disabled" selected="selected">Selecione uma cidade</option>
+                @foreach (Model.Cidade cidade in ViewBag.Cidades)
+                {
+                    <option value="@cidade.Id">@cidade.Nome</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label for="campo-cpf">CPF</label>
+            <input type="text" name="cpf" id="campo-cpf" value="@ViewBag.Cliente.Cpf" />
+        </div>
+        <div>
+            <label for="campo-cpf">Data de Nascimento</label>
+            <input type="datetime-local" name="nascimento" id="campo-nascimento" value="@ViewBag.Cliente.DataNascimento" />
+        </div>
+        <div>
+            <label for="campo-numero">Número</label>
+            <input type="text" name="numero" id="campo-numero" value="@ViewBag.Cliente.Numero" />
+        </div>
+        <div>
+            <label for="campo-complemento">Complemento</label>
+            <input type="text" name="complemento" id="campo-complemento" value="@ViewBag.Cliente.Complemento" />
+        </div>
+        <div>
+            <label for="campo-logradouro">Logradouro</label>
+            <input type="text" name="logradouro" id="campo-logradouro" value="@ViewBag.Cliente.Logradouro" />
+        </div>
+        <div>
+            <label for="campo-cep">CEP</label>
+            <input type="text" name="cep" id="campo-cep" value="@ViewBag.Cliente.CEP" />
+        </div>
+        <input type="hidden" name="id" value="@ViewBag.Cliente.Id" />
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
+
+
+

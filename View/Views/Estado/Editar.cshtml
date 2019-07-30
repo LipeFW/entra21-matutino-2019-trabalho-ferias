@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    <form action="/estado/editar/" method="post">
+        <div>
+            <label for="campo-nome">Nome</label>
+            <input type="text" name="nome" id="campo-nome" value="@ViewBag.Estado.Nome" />
+        </div>
+        <div>
+            <label for="campo-sigla">Sigla</label>
+            <input type="text" name="sigla" id="campo-sigla" value="@ViewBag.Estado.Sigla" />
+        </div>
+        <input type="hidden" name="id" value="@ViewBag.Estado.Id" />
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
+
+
+

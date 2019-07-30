@@ -3,12 +3,17 @@
     ViewBag.Title = "Cidades";
 }
 
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cidades</title>
+    <link href="https://fonts.googleapis.com/css?family=Signika+Negative&display=swap" rel="stylesheet">
+</head>
 <h3>Cidades</h3>
 
 <div class="row mb-3">
     <div class="col-12">
         <a href="/cidade/cadastro" class="btn btn-primary float-right">
-            <i class="fas fa-plus"></i> Nova Cidade
+            <i class="fas fa-plus"> </i> Nova Cidade
         </a>
     </div>
 </div>
@@ -19,6 +24,7 @@
             <th>Código</th>
             <th>Nome</th>
             <th>Habitantes</th>
+            <th>Ação</th>
         </tr>
     </thead>
     <tfoot class="bg-primary">
@@ -26,16 +32,21 @@
             <th>Código</th>
             <th>Nome</th>
             <th>Habitantes</th>
+            <th>Ação</th>
         </tr>
     </tfoot>
     <tbody>
         @foreach (Model.Cidade cidade in ViewBag.Cidades)
         {
-        <tr>
-            <td>@cidade.Id</td>
-            <td>@cidade.Nome</td>
-            <td>@cidade.NumeroHabitantes</td>
-        </tr>
+            <tr>
+                <td>@cidade.Id</td>
+                <td>@cidade.Nome</td>
+                <td>@cidade.NumeroHabitantes</td>
+                <td>
+                    <a href="/cidade/editar?id=@ViewBag.Cidades">Editar</a>
+                    <a href="/cidade/apagar?id=@ViewBag.Cidades">Apagar</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

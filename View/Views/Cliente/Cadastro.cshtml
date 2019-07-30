@@ -6,7 +6,6 @@
 <h3>Cadastro Cliente</h3>
 
 <form method="post" action="/cliente/store">
-
     <div class="row">
         <div class="col-12">
             <div class="form-group">
@@ -20,17 +19,12 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="campo-cidade">Cidade</label>
-                <select class="form-control"
-                        name="cidade">
-                    <option disabled="disabled"
-                            selected="selected">
-                        Selecione uma categoria
-                    </option>
+                <select class="form-control" name="cidade">
+                    <option disabled="disabled" selected="selected">Selecione uma cidade</option>
                     @foreach (Model.Cidade cidade in ViewBag.Cidades)
                     {
                         <option value="@cidade.Id">@cidade.Nome</option>
                     }
-
                 </select>
             </div>
         </div>
@@ -90,18 +84,11 @@
         </div>
     </div>
 
-
-
     <div class="row">
         <div class="col-12">
-            <button type="submit"
-                    class="btn btn-success">
-                Salvar
-            </button>
+            <button type="submit" class="btn btn-success">Salvar</button>
         </div>
     </div>
-
-
 </form>
 
 

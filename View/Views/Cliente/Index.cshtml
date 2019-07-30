@@ -3,7 +3,7 @@
     ViewBag.Title = "Clientes";
 }
 
-<h2>Clientes</h2>
+<h3>Clientes</h3>
 
 <div class="row mb-3">
     <div class="col-12">
@@ -52,7 +52,10 @@
                 <td>@cliente.Complemento</td>
                 <td>@cliente.Logradouro</td>
                 <td>@cliente.CEP</td>
-                <td></td>
+                <td>
+                    <a href="/cliente/editar?id=@ViewBag.Clientes">Editar</a>
+                    <a href="/cliente/apagar?id=@ViewBag.Clientes">Apagar</a>
+                </td>
             </tr>
         }
     </tbody>

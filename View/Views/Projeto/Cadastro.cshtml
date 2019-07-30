@@ -3,5 +3,48 @@
     ViewBag.Title = "Cadastro Projeto";
 }
 
-<h2>Cadastro Projeto</h2>
+<h3>Cadastro Projeto</h3>
 
+<form method="post" action="/estado/store">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-codigocliente">Código do Cliente</label>
+                <input type="text" name="cliente" id="campo-codigocliente" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-projeto">Projeto</label>
+                <input type="text" name="projeto" id="campo-projeto" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-datacrianca">Data de Criação</label>
+                <input type="text" name="datacriacao" id="campo-datacriacao" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-datafinalizacao">Data de Finalização</label>
+                <input type="text" name="datafinalizacao" id="campo-datafinalizacao" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </div>
+    </div>
+</form>

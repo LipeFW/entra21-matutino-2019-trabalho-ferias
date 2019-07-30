@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    <form action="/projeto/editar/" method="post">
+        <div>
+            <label for="campo-codigocliente">Código do Cliente</label>
+            <input type="text" name="cliente" id="campo-codigocliente" value="@ViewBag.Projeto.IdCliente" />
+        </div>
+        <div>
+            <label for="campo-projeto">Projeto</label>
+            <input type="text" name="projeto" id="campo-projeto" value="@ViewBag.Projeto.Nome" />
+        </div>
+        <div>
+            <label for="campo-datacrianca">Data de Criação</label>
+            <input type="text" name="datacriacao" id="campo-datacriacao" value="@ViewBag.Projeto.DataCriacao" />
+        </div>
+        <div>
+            <label for="campo-datafinalizacao">Data de Finalização</label>
+            <input type="text" name="datafinalizacao" id="campo-datafinalizacao" value="@ViewBag.Projeto.DataFinalizacao" />
+        </div>
+        <input type="hidden" name="id" value="@ViewBag.Projeto.Id" />
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
+

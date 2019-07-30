@@ -9,42 +9,41 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    
-        public class ProjetoRepositorio
+
+    public class ProjetoRepositorio
+    {
+        public int Inserir(Projeto projeto)
         {
-            public int Inserir (Projeto projeto)
-            {
-                SqlCommand comando = Conexao.Conectar();
+            SqlCommand comando = Conexao.Conectar();
             comando.CommandText = @"INSERT INTO projetos(id,id_Cliente,nome,data_Criacao,data_finalizacao)
-OUTPUT INSERTED.ID VALUES
-(@ID,@ID_CLIENTE,@NOME,@DATA_CRIACAO,@DATA_FINALIZACAO)";
-                comando.Parameters.AddWithValue("@ID", projeto.Id);
-                comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.IdCliente);
-                comando.Parameters.AddWithValue("@NOME", projeto.Nome);
-                comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
-                comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
-               
-                int id = Convert.ToInt32(comando.ExecuteScalar());
+            OUTPUT INSERTED.ID VALUES
+            (@ID,@ID_CLIENTE,@NOME,@DATA_CRIACAO,@DATA_FINALIZACAO)";
+            comando.Parameters.AddWithValue("@ID", projeto.Id);
+            comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.IdCliente);
+            comando.Parameters.AddWithValue("@NOME", projeto.Nome);
+            comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
+            comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
+
+            int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
-                return id;
-            }
+            return id;
+        }
 
 
         public List<Projeto> ObterTodos()
         {
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = @"SELECT 
-projetos.id AS 'ProjetoId',
-projetos.id_Cliente AS 'ProjetoId_Cliente',
-projetos.Nome AS 'ProjetoNome',
-projetos.Data_Criacao AS 'ProjetoData_Criacao',
-projetos.Data_Finalizacao AS 'ProjetoData_Finalizacao',
-FROM projetos
-INNER JOIN categorias ON
-    (projeto.categoria=Categoria.Id)";
+            projetos.id AS 'ProjetoId',
+            projetos.id_Cliente AS 'ProjetoId_Cliente',
+            projetos.Nome AS 'ProjetoNome',
+            projetos.Data_Criacao AS 'ProjetoData_Criacao',
+            projetos.Data_Finalizacao AS 'ProjetoData_Finalizacao'
+            FROM projetos";
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
+
             List<Projeto> projetos = new List<Projeto>();
             foreach (DataRow linha in tabela.Rows)
             {
@@ -54,13 +53,56 @@ INNER JOIN categorias ON
                 projeto.Nome = linha["ProjetoNome"].ToString();
                 projeto.DataCriacao = Convert.ToDateTime(linha["ProjetoData_Criacao"]);
                 projeto.DataFinalizacao = Convert.ToDateTime(linha["ProjetoData_Finalizacao"]);
-               
-                //projeto.Categoria = new Categoria();
-                //projeto.Categoria.Nome = linha["CategoriaNome"].ToString();
                 projetos.Add(projeto);
             }
             return projetos;
-
         }
+
+        public bool Apagar(int id)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = @"DELETE FROM projetos WHERE id = @ID";
+            comando.Parameters.AddWithValue("@ID", id);
+            int quantidadeAfetada = comando.ExecuteNonQuery();
+            comando.Connection.Close();
+            return quantidadeAfetada == 1;
+        }
+
+        public Projeto ObterPeloId(int id)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = @"SELECT * FROM projetos WHERE id = @ID";
+            comando.Parameters.AddWithValue("@ID", id);
+            DataTable tabela = new DataTable();
+            tabela.Load(comando.ExecuteReader());
+
+            if (tabela.Rows.Count == 1)
+            {
+                DataRow linha = tabela.Rows[0];
+                Projeto projeto = new Projeto();
+                projeto.Id = Convert.ToInt32(linha["ProjetoId"]);
+                projeto.IdCliente = Convert.ToInt32(linha["ProjetoId_Cliente"]);
+                projeto.Nome = linha["ProjetoNome"].ToString();
+                projeto.DataCriacao = Convert.ToDateTime(linha["ProjetoData_Criacao"]);
+                projeto.DataFinalizacao = Convert.ToDateTime(linha["ProjetoData_Finalizacao"]);
+                return projeto;
+            }
+            return null;
+        }
+
+        public bool Editar(Projeto projeto)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = @"UPDATE projetos SET id_cliente = @ID_CLIENTE, nome = @NOME, data_criacao = @DATA_CRIACAO, data_finalizacao = @DATA_FINALIZACAO ";
+            comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.IdCliente);
+            comando.Parameters.AddWithValue("@NOME", projeto.Nome);
+            comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
+            comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
+            int quantidadeAfetada = comando.ExecuteNonQuery();
+            comando.Connection.Close();
+            return quantidadeAfetada == 1;
+        }
+
     }
+
 }

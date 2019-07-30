@@ -3,5 +3,49 @@
     ViewBag.Title = "Projetos";
 }
 
-<h2>Projetos</h2>
+<h3>Projetos</h3>
 
+<div class="row mb-3">
+    <div class="col-12">
+        <a href="/projeto/cadastro" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Novo Projeto</a>
+    </div>
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="bg-primary">
+        <tr>
+            <th>Código</th>
+            <th>Código Cliente</th>
+            <th>Nome</th>
+            <th>Data Criação</th>
+            <th>Data Finalização</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tfoot class="bg-primary">
+        <tr>
+            <th>Código</th>
+            <th>Código Cliente</th>
+            <th>Nome</th>
+            <th>Data Criação</th>
+            <th>Data Finalização</th>
+            <th>Ação</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (Model.Projeto projeto in ViewBag.Projetos)
+        {
+            <tr>
+                <td>@projeto.Id</td>
+                <td>@projeto.IdCliente</td>
+                <td>@projeto.Nome</td>
+                <td>@projeto.DataCriacao</td>
+                <td>@projeto.DataFinalizacao</td>
+                <td>
+                    <a href="/projeto/editar?id=@ViewBag.Projetos">Editar</a>
+                    <a href="/projeto/apagar?id=@ViewBag.Projetos">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

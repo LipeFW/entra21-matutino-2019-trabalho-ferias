@@ -33,11 +33,15 @@
     <tbody>
         @foreach (Model.Estado estado in ViewBag.Estados)
         {
-        <tr>
-            <td>@estado.Id</td>
-            <td>@estado.Nome</td>
-            <td>@estado.Sigla</td>
-        </tr>
+            <tr>
+                <td>@estado.Id</td>
+                <td>@estado.Nome</td>
+                <td>@estado.Sigla</td>
+                <td>
+                    <a href="/estado/editar?id=@ViewBag.Estados">Editar</a>
+                    <a href="/estado/apagar?id=@ViewBag.Estados">Apagar</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

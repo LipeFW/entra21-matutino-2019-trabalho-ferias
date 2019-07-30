@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Tarefa Férias</title>
+    <title>@ViewBag.Title - MAMP Transportes</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -17,11 +17,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Tarefa férias", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("MAMP Transportes", "Home", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Cidade", "Index", "Cidade", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Cliente", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Estado", "Index", "Estado", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Projeto", "Index", "Projeto", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Tarefa", "Index", "Tarefa", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Usuário", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
+
+
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
         </div>
     </div>
@@ -30,7 +37,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Tarefa Férias</p>
+            <p>&copy; @DateTime.Now.Year - MAMP Transportes</p>
         </footer>
     </div>
 

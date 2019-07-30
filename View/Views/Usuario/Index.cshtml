@@ -3,5 +3,49 @@
     ViewBag.Title = "Usuários";
 }
 
-<h2>Usuários</h2>
+<h3>Usuários</h3>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <a href="/usuario/cadastro" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Novo Usuário</a>
+    </div>
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="bg-primary">
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Login</th>
+            <th>Senha</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tfoot class="bg-primary">
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Login</th>
+            <th>Senha</th>
+            <th>Ação</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (Model.Usuario usuario in ViewBag.Usuarios)
+        {
+            <tr>
+                <td>@usuario.Id</td>
+                <td>@usuario.Nome</td>
+                <td>@usuario.Login</td>
+                <td>@usuario.Senha</td>
+                <td>
+                    <a href="/usuario/editar?id=@ViewBag.Clientes">Editar</a>
+                    <a href="/usuario/apagar?id=@ViewBag.Clientes">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
 

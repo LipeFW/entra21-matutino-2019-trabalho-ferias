@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    <form action="/tarefa/editar/" method="post">
+        <div>
+            <label for="campo-codigousuario">Código do Usuário</label>
+            <input type="text" name="codigousuario" id="campo-codigousuario" value="@ViewBag.Tarefa.IdUsuarioResponsavel" />
+        </div>
+        <div>
+            <label for="campo-codigoprojeto">Código do Projeto</label>
+            <input type="text" name="codigoprojeto" id="campo-codigoprojeto" value="@ViewBag.Tarefa.IdProjeto" />
+        </div>
+        <div>
+            <label for="campo-datacrianca">Código da Categoria</label>
+            <input type="text" name="codigocategoria" id="campo-codigocategoria" value="@ViewBag.Tarefa.IdCategoria" />
+        </div>
+        <div>
+            <label for="campo-titulo">Título</label>
+            <input type="text" name="titulo" id="campo-titulo" value="@ViewBag.Tarefa.Titulo" />
+        </div>
+        <div>
+            <label for="campo-descricao">Descrição</label>
+            <input type="text" name="descricao" id="campo-descricao" value="@ViewBag.Tarefa.Descricao" />
+        </div>
+        <div>
+            <label for="campo-duracao">Duração</label>
+            <input type="text" name="duracao" id="campo-duracao" value="@ViewBag.Tarefa.Duracao" />
+        </div>
+        <input type="hidden" name="id" value="@ViewBag.Tarefa.Id" />
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

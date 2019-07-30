@@ -3,5 +3,66 @@
     ViewBag.Title = "Cadastro Tarefa";
 }
 
-<h2>Cadastro Tarefa</h2>
+<h3>Cadastro Tarefa</h3>
 
+<form method="post" action="/estado/store">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-codigousuario">Código do Usuário</label>
+                <input type="text" name="codigousuario" id="campo-codigousuario" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-codigoprojeto">Código do Projeto</label>
+                <input type="text" name="codigoprojeto" id="campo-codigoprojeto" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-datacrianca">Código da Categoria</label>
+                <input type="text" name="codigocategoria" id="campo-codigocategoria" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-titulo">Título</label>
+                <input type="text" name="titulo" id="campo-titulo" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-descricao">Descrição</label>
+                <input type="text" name="descricao" id="campo-descricao" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-duracao">Duração</label>
+                <input type="text" name="duracao" id="campo-duracao" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </div>
+    </div>
+</form>
