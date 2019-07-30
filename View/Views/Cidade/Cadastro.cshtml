@@ -3,20 +3,24 @@
     ViewBag.Title = "Cadastro Cidade";
 }
 
-<h3>Cadastro Cidade</h3>
+<h3 class="text-center mb-3 mt-3 text-dark">Cadastro de Cidades</h3>
 
 <form method="post" action="/cidade/store">
     <div class="row">
-        <div class="form-group">
-            <label for="campo-nome">Nome</label>
-            <input type="text" name="nome" class="form-control" id="campo-nome" />
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-nome">Nome</label>
+                <input type="text" name="nome" class="form-control" id="campo-nome" />
+            </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="form-group">
-            <label for="campo-habitantes">Número de Habitantes</label>
-            <input type="text" name="habitantes" class="form-control" id="campo-habitantes" />
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-habitantes">Número de Habitantes</label>
+                <input type="text" name="habitantes" class="form-control" id="campo-habitantes" />
+            </div>
         </div>
     </div>
 
@@ -37,8 +41,8 @@
 
     <div class="row">
         <div class="col-12">
-            <button type="submit" class="btn btn-success">
-                Salvar
+            <button type="submit" class="btn btn-success float-right">
+                <i class="fas fa-save"></i> Salvar
             </button>
         </div>
     </div>

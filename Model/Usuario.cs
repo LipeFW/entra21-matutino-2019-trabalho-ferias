@@ -13,7 +13,6 @@ namespace Model
         public string Login;
         public string Senha;
 
-        public Usuario usuario;
 
     }
 

@@ -49,5 +49,37 @@ namespace View.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Editar(int id)
+        {
+            Cliente cliente = repository.ObterPeloId(id);
+            ViewBag.Cliente = cliente;
+
+            ClienteRepositorio clienteRepositorio = new ClienteRepositorio();
+            List<Cliente> clientes = clienteRepositorio.ObterTodos();
+            ViewBag.Clientes = clientes;
+
+            return View();
+
+        }
+
+        public ActionResult Apagar(int id)
+        {
+            repository.Apagar(id);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Update(int id, string nome, string cep, string cidade)
+        {
+            Cliente cliente = new Cliente();
+            cliente.Id = id;
+            cliente.Nome = nome;
+            cliente.CEP = cep;
+            cliente.Cidade = new Cidade();
+            cliente.Cidade.Nome = cidade;
+
+            repository.Editar(cliente);
+            return RedirectToAction("Index");
+        }
     }
 }

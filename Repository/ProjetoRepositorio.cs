@@ -15,10 +15,10 @@ namespace Repository
         public int Inserir(Projeto projeto)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"INSERT INTO projetos(id,id_cliente,nome,data_criacao,data_finalizacao)
+            comando.CommandText = @"INSERT INTO projetos
+            (id_cliente, nome, data_criacao, data_finalizacao)
             OUTPUT INSERTED.ID VALUES
-            (@ID,@ID_CLIENTE,@NOME,@DATA_CRIACAO,@DATA_FINALIZACAO)";
-            comando.Parameters.AddWithValue("@ID", projeto.Id);
+            (@ID_CLIENTE, @NOME, @DATA_CRIACAO, @DATA_FINALIZACAO)";
             comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.IdCliente);
             comando.Parameters.AddWithValue("@NOME", projeto.Nome);
             comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
@@ -35,14 +35,15 @@ namespace Repository
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = @"SELECT 
             projetos.id AS 'ProjetoId',
-            projetos.id_Cliente AS 'ProjetoId_Cliente',
-            projetos.Nome AS 'ProjetoNome',
-            projetos.Data_Criacao AS 'ProjetoData_Criacao',
-            projetos.Data_Finalizacao AS 'ProjetoData_Finalizacao'
+            projetos.id_cliente AS 'ProjetoId_Cliente',
+            projetos.nome AS 'ProjetoNome',
+            projetos.data_criacao AS 'ProjetoData_Criacao',
+            projetos.data_finalizacao AS 'ProjetoData_Finalizacao'
             FROM projetos";
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
+            comando.Connection.Close();
 
             List<Projeto> projetos = new List<Projeto>();
             foreach (DataRow linha in tabela.Rows)
@@ -71,7 +72,13 @@ namespace Repository
         public Projeto ObterPeloId(int id)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"SELECT * FROM projetos WHERE id = @ID";
+            comando.CommandText = @"SELECT 
+            projetos.id AS 'ProjetoId',
+            projetos.id_cliente AS 'ProjetoId_Cliente',
+            projetos.nome AS 'ProjetoNome',
+            projetos.data_criacao AS 'ProjetoData_Criacao',
+            projetos.data_finalizacao AS 'ProjetoData_Finalizacao'
+            FROM projetos WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
@@ -93,9 +100,10 @@ namespace Repository
         public bool Editar(Projeto projeto)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"UPDATE projetos SET id_cliente = @ID_CLIENTE, nome = @NOME, data_criacao = @DATA_CRIACAO, data_finalizacao = @DATA_FINALIZACAO ";
+            comando.CommandText = @"UPDATE projetos SET id_cliente = @ID_CLIENTE, nome = @NOME, data_criacao = @DATA_CRIACAO, data_finalizacao = @DATA_FINALIZACAO WHERE id = @ID  ";
             comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.IdCliente);
             comando.Parameters.AddWithValue("@NOME", projeto.Nome);
+            comando.Parameters.AddWithValue("@ID", projeto.Id);
             comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
             comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
             int quantidadeAfetada = comando.ExecuteNonQuery();

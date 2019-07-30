@@ -41,8 +41,12 @@
                 <td>@usuario.Login</td>
                 <td>@usuario.Senha</td>
                 <td>
-                    <a href="/usuario/editar?id=@ViewBag.Clientes">Editar</a>
-                    <a href="/usuario/apagar?id=@ViewBag.Clientes">Apagar</a>
+                    <a href="/usuario/editar?id=@usuario.Id" class="btn btn-primary">
+                        <i class="fas fa-pen"></i> Editar
+                    </a>
+                    <a href="/usuario/apagar?id=@usuario.Id" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Apagar
+                    </a>
                 </td>
             </tr>
         }

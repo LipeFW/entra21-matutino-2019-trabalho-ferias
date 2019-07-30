@@ -37,7 +37,7 @@ namespace Repository
         {
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = @"SELECT 
-            clientes.id AS 'ClienteID',
+            clientes.id AS 'ClienteId',
             clientes.id_Cidade AS 'ClienteId_Cidade',
             clientes.nome AS 'ClienteNome',
             clientes.CPF AS 'ClienteCPF',
@@ -85,7 +85,19 @@ namespace Repository
         public Cliente ObterPeloId(int id)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"SELECT * FROM clientes WHERE id = @ID";
+            comando.CommandText = @"SELECT clientes.id AS 'ClienteId',
+clientes.nome AS 'ClienteNome',
+clientes.cpf AS 'ClienteCPF',
+clientes.cep AS 'ClienteCEP',
+clientes.numero AS 'ClienteNumero',
+clientes.complemento AS 'ClienteComplemento',
+clientes.logradouro AS 'ClienteLogradouro',
+clientes.data_nascimento AS 'ClienteData_Nascimento',
+clientes.id_cidade AS 'ClienteId_Cidade',
+cidades.nome AS 'CidadeNome'
+FROM clientes 
+INNER JOIN cidades ON (clientes.id_cidade = cidades.id)
+WHERE clientes.id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
@@ -111,7 +123,7 @@ namespace Repository
         public bool Editar(Cliente cliente)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"UPDATE cidades SET id_cidade = @ID_CIDADE,nome = @NOME, cpf = @CPF, data_nascimento = @DATA_NASCIMENTO, numero = @NUMERO, complemento = @COMPLEMENTO, logradouro = @LOGRADOURO, cep = @CEP";
+            comando.CommandText = @"UPDATE cidades SET id_cidade = @ID_CIDADE,nome = @NOME, cpf = @CPF, data_nascimento = @DATA_NASCIMENTO, numero = @NUMERO, complemento = @COMPLEMENTO, logradouro = @LOGRADOURO, cep = @CEP WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID_CIDADE", cliente.IdCidade);
             comando.Parameters.AddWithValue("@NOME", cliente.Nome);
             comando.Parameters.AddWithValue("@CPF", cliente.CPF);
@@ -120,6 +132,7 @@ namespace Repository
             comando.Parameters.AddWithValue("@COMPLEMENTO", cliente.Complemento);
             comando.Parameters.AddWithValue("@LOGRADOURO", cliente.Logradouro);
             comando.Parameters.AddWithValue("@CEP", cliente.CEP);
+            comando.Parameters.AddWithValue("@ID", cliente.Id);
             int quantidadeAfetada = comando.ExecuteNonQuery();
             comando.Connection.Close();
             return quantidadeAfetada == 1;

@@ -15,9 +15,10 @@ namespace Repository
         public int Inserir(Estado estado)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"INSERT INTO estados(nome,sigla)
-           OUTPUT INSERTED.ID
-           VALUES (@NOME,@SIGLA)";
+            comando.CommandText = @"INSERT INTO estados
+            (nome,sigla)
+            OUTPUT INSERTED.ID
+            VALUES (@NOME,@SIGLA)";
             comando.Parameters.AddWithValue("@NOME", estado.Nome);
             comando.Parameters.AddWithValue("@SIGLA", estado.Sigla);
 
@@ -38,6 +39,8 @@ namespace Repository
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
+            comando.Connection.Close();
+
             List<Estado> estados = new List<Estado>();
             foreach (DataRow linha in tabela.Rows)
             {
@@ -46,8 +49,6 @@ namespace Repository
                 estado.Nome = linha["EstadoNome"].ToString();
                 estado.Sigla = linha["EstadoSigla"].ToString();
 
-                //estado.Categoria = new Categoria();
-                //estado.Categoria.Nome = linha["CategoriaNome"].ToString();
                 estados.Add(estado);
             }
             return estados;
@@ -67,7 +68,11 @@ namespace Repository
         public Estado ObterPeloId(int id)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"SELECT * FROM estados WHERE id = @ID";
+            comando.CommandText = @"SELECT
+            estados.id AS 'EstadoId',
+            estados.nome AS 'EstadoNome',
+            estados.sigla AS 'EstadoSigla'
+            FROM estados WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
@@ -87,8 +92,12 @@ namespace Repository
         public bool Editar(Estado estado)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"UPDATE estados SET nome = @NOME, sigla = @SIGLA";
+            comando.CommandText = @"UPDATE estados SET
+            nome = @NOME,
+            sigla = @SIGLA
+            WHERE id = @ID";
             comando.Parameters.AddWithValue("@NOME", estado.Nome);
+            comando.Parameters.AddWithValue("@ID", estado.Id);
             comando.Parameters.AddWithValue("@SIGLA", estado.Sigla);
             int quantidadeAfetada = comando.ExecuteNonQuery();
             comando.Connection.Close();

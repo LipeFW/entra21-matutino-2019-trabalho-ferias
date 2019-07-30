@@ -3,28 +3,36 @@
     ViewBag.Title = "Editar";
 }
 
-<!DOCTYPE html>
+    <h3 class="text-center mb-3 mt-3 text-dark">Edição de Estado</h3>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Editar</title>
-</head>
-<body>
-    <form action="/estado/editar/" method="post">
-        <div>
-            <label for="campo-nome">Nome</label>
-            <input type="text" name="nome" id="campo-nome" value="@ViewBag.Estado.Nome" />
+<form action="/estado/update/" method="post">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-nome">Nome</label>
+                <input class="form-control" type="text" name="nome" id="campo-nome" value="@ViewBag.Estado.Nome" />
+            </div>
         </div>
-        <div>
-            <label for="campo-sigla">Sigla</label>
-            <input type="text" name="sigla" id="campo-sigla" value="@ViewBag.Estado.Sigla" />
+    </div>
+    <div>
+        <label for="campo-sigla">Sigla</label>
+        <input class="form-control" type="text" name="sigla" id="campo-sigla" value="@ViewBag.Estado.Sigla" />
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <input type="hidden" name="id" value="@ViewBag.Estado.Id" />
+            </div>
         </div>
-        <input type="hidden" name="id" value="@ViewBag.Estado.Id" />
-        <button type="submit">Salvar</button>
-    </form>
-</body>
-</html>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success float-right">
+                <i class="fas fa-save"></i> Salvar
+            </button>
+        </div>
+    </div>
+</form>
 
 
 

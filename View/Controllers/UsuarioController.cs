@@ -27,10 +27,10 @@ namespace View.Controllers
 
         public ActionResult Cadastro()
         {
-            UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
-            List<Usuario> usuarios = usuarioRepositorio.ObterTodos();
+            //UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
+            //List<Usuario> usuarios = usuarioRepositorio.ObterTodos();
 
-            ViewBag.Usuarios = usuarios;
+            //ViewBag.Usuarios = usuarios;
             return View();
         }
 
@@ -42,6 +42,37 @@ namespace View.Controllers
             usuario.Senha = senha;
             repository.Inserir(usuario);
 
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Editar(int id)
+        {
+            Usuario usuario = repository.ObterPeloId(id);
+            ViewBag.Usuario = usuario;
+
+            //UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
+            //List<Usuario> usuarios = usuarioRepositorio.ObterTodos();
+            //ViewBag.Usuarios = usuarios;
+
+            return View();
+
+        }
+
+        public ActionResult Apagar(int id)
+        {
+            repository.Apagar(id);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Update(int id, string nome, string login, string senha)
+        {
+            Usuario usuario = new Usuario();
+            usuario.Id = id;
+            usuario.Nome = nome;
+            usuario.Login = login;
+            usuario.Senha = senha;
+
+            repository.Editar(usuario);
             return RedirectToAction("Index");
         }
     }

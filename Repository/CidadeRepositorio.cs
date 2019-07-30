@@ -34,15 +34,16 @@ namespace Repository
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = @"SELECT 
             cidades.id AS 'CidadeId',
+            cidades.nome AS 'CidadeNome',
             cidades.id_estado AS 'CidadeId_Estado',
             cidades.numero_habitantes AS 'CidadeNumero_Habitantes',
-            cidades.nome AS 'CidadeNome',
             estados.nome AS 'EstadoNome'
             FROM cidades
-            INNER JOIN estados ON (cidades.id_estado = estados.id)";
+            INNER JOIN estados ON (cidades.id_estado = estados.id);";
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
+            comando.Connection.Close();
 
             List<Cidade> cidades = new List<Cidade>();
             foreach (DataRow linha in tabela.Rows)
@@ -72,8 +73,17 @@ namespace Repository
         public Cidade ObterPeloId(int id)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = @"SELECT * FROM cidades WHERE id = @ID";
+            comando.CommandText = @"SELECT
+cidades.id AS 'CidadeId',
+cidades.nome AS 'CidadeNome',
+cidades.id_estado AS 'CidadeId_Estado',
+cidades.numero_habitantes AS 'CidadeNumero_Habitantes',
+estados.nome AS 'EstadoNome'
+FROM cidades 
+INNER JOIN estados ON (cidades.id_estado = estados.id)
+WHERE cidades.id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
+
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
 
@@ -95,6 +105,7 @@ namespace Repository
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = @"UPDATE cidades SET nome = @NOME, id_estado = @ID_ESTADO, numero_habitantes = @NUMERO_HABITANTES WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID_ESTADO", cidade.IdEstado);
+            comando.Parameters.AddWithValue("@ID", cidade.Id);
             comando.Parameters.AddWithValue("@NOME", cidade.Nome);
             comando.Parameters.AddWithValue("@NUMERO_HABITANTES", cidade.NumeroHabitantes);
             int quantidadeAfetada = comando.ExecuteNonQuery();

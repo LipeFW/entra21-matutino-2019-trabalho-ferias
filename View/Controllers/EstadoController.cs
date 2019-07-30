@@ -43,5 +43,29 @@ namespace View.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Editar(int id)
+        {
+            Estado estado = repository.ObterPeloId(id);
+            ViewBag.Estado = estado;
+            return View();
+        }
+
+        public ActionResult Update(int id, string nome, string sigla)
+        {
+            Estado estado = new Estado();
+            estado.Id = id;
+            estado.Nome = nome;
+            estado.Sigla = sigla;
+
+            repository.Editar(estado);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Apagar(int id)
+        {
+            repository.Apagar(id);
+            return RedirectToAction("Index");
+        }
     }
 }

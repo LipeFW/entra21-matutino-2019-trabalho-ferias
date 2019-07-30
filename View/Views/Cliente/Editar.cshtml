@@ -2,16 +2,9 @@
 @{
     ViewBag.Title = "Editar";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Editar</title>
-</head>
-<body>
-    <form action="/cliente/editar/" method="post">
+    <h3 class="text-center mb-3 mt-3 text-info">Edição de Clientes</h3>
+    <form action="/cliente/update/" method="post">
+        <input type="hidden" name="id" value="@ViewBag.Cliente.Id" />
         <div>
             <label for="campo-nome">Nome</label>
             <input type="text" name="nome" id="campo-nome" value="@ViewBag.Cliente.Nome" />
@@ -21,7 +14,14 @@
                 <option disabled="disabled" selected="selected">Selecione uma cidade</option>
                 @foreach (Model.Cidade cidade in ViewBag.Cidades)
                 {
-                    <option value="@cidade.Id">@cidade.Nome</option>
+                    if (cidade.Id == ViewBag.Cliente.IdCidade)
+                    {
+                        <option value="@cidade.Id" selected="selected">@cidade.Nome</option>
+                    }
+                    else
+                    {
+                        <option value="@cidade.Id">@cidade.Nome</option>
+                    }
                 }
             </select>
         </div>
@@ -49,11 +49,9 @@
             <label for="campo-cep">CEP</label>
             <input type="text" name="cep" id="campo-cep" value="@ViewBag.Cliente.CEP" />
         </div>
-        <input type="hidden" name="id" value="@ViewBag.Cliente.Id" />
+
         <button type="submit">Salvar</button>
     </form>
-</body>
-</html>
 
 
 

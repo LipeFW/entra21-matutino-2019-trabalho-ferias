@@ -18,7 +18,7 @@ namespace Model
         public string Logradouro;
         public string CEP;
 
-        public Cliente cliente;
+        public Cidade Cidade;
 
     }
 }
